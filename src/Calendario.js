@@ -1,67 +1,78 @@
 import React, { useState } from 'react';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
-import moment from 'moment';
-import 'moment/locale/es';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-
-moment.locale('es');
-
-const localizer = momentLocalizer(moment);
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import './Calendario.css';
+import esLocale from '@fullcalendar/core/locales/es';
 
 const Calendario = () => {
-  const [eventos, setEventos] = useState([
-    {
-      id: 1,
-      title: 'Evento 1',
-      start: moment().toDate(),
-      end: moment().add(1, 'hour').toDate(),
-      draggable: true, // Este evento es arrastrable
-    },
-    {
-      id: 2,
-      title: 'Evento 2',
-      start: moment().add(1, 'day').toDate(),
-      end: moment().add(1, 'day').add(1, 'hour').toDate(),
-      draggable: false, // Este evento no es arrastrable
-    },
-  ]);
-
-  const handleEventDrop = ({ event, start, end }) => {
-    const updatedEvents = eventos.map((item) =>
-      item.id === event.id ? { ...item, start, end } : item
-    );
-    setEventos(updatedEvents);
-  };
-
-  const handleSelectEvent = (event) => {
-    const title = prompt('Editar título:', event.title);
-    if (title !== null) {
-      const updatedEvents = eventos.map((item) =>
-        item.id === event.id ? { ...item, title } : item
-      );
-      setEventos(updatedEvents);
-    }
-  };
-
-  return (
-    <div style={{ height: 500 }}>
-      <Calendar
-        localizer={localizer}
-        events={eventos}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ margin: '50px' }}
-        onSelectEvent={handleSelectEvent}
-        onEventDrop={handleEventDrop}
-        resizable
-        selectable
-        onSelectSlot={(slotInfo) =>
-          console.log('Slot selected: ', slotInfo)
+    const [events, setEvents] = useState([
+        {
+            title: 'Evento 1',
+            start: '2024-01-28T10:00:00',
+            end: '2024-01-28T12:00:00',
+            description: 'Descripción del evento 1'
+        },
+        {
+            title: 'Evento 2',
+            start: '2024-01-29T14:00:00',
+            end: '2024-01-29T16:00:00',
+            description: 'Descripción del evento 2'
         }
-        draggableAccessor={(event) => event.draggable} // Indica si un evento es arrastrable o no
-      />
-    </div>
-  );
+    ]);
+
+    const handleEventDrop = (info) => {
+        console.log('Evento arrastrado:', info.event);
+        // Aquí podrías manejar la lógica para guardar los cambios en el evento
+    };
+
+    const handleEventResize = (info) => {
+        console.log('Evento redimensionado:', info.event);
+        // Aquí podrías manejar la lógica para guardar los cambios en el evento
+    };
+
+    const handleEventClick = (info) => {
+        const title = prompt('Editar título:', info.event.title);
+        const description = prompt('Editar descripción:', info.event.extendedProps.description);
+        if (title !== null && description !== null) {
+            info.event.setProp('title', title);
+            info.event.setExtendedProp('description', description);
+            // Aquí podrías manejar la lógica para guardar los cambios en el evento
+        }
+    };
+
+    const handleDateClick = (info) => {
+        const title = prompt('Agregar título:');
+        const description = prompt('Agregar descripción:');
+        if (title !== null && description !== null) {
+            setEvents([
+                ...events,
+                { title, start: info.dateStr, allDay: true, description }
+            ]);
+            // Aquí podrías manejar la lógica para guardar el nuevo evento
+        }
+    };
+
+    return (
+        <FullCalendar
+            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+            initialView="timeGridWeek"
+            locale={esLocale}
+            firstDay={1} // 0: Domingo, 1: Lunes, 2: Martes, etc.
+            headerToolbar={{
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            }}
+            editable={true}
+            events={events}
+            eventDrop={handleEventDrop}
+            eventResize={handleEventResize}
+            eventClick={handleEventClick}
+            dateClick={handleDateClick}
+        />
+    );
 };
 
 export default Calendario;
