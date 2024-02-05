@@ -24,12 +24,12 @@ const Calendario = () => {
 
     const handleEventDrop = (info) => {
         console.log('Evento arrastrado:', info.event);
-        // Aquí podrías manejar la lógica para guardar los cambios en el evento
+        // Aquí manejar la lógica para guardar los cambios en el evento
     };
 
     const handleEventResize = (info) => {
         console.log('Evento redimensionado:', info.event);
-        // Aquí podrías manejar la lógica para guardar los cambios en el evento
+        // Aquí  manejar la lógica para guardar los cambios en el evento
     };
 
     const handleEventClick = (info) => {
@@ -38,7 +38,7 @@ const Calendario = () => {
         if (title !== null && description !== null) {
             info.event.setProp('title', title);
             info.event.setExtendedProp('description', description);
-            // Aquí podrías manejar la lógica para guardar los cambios en el evento
+            // Aquí manejar la lógica para guardar los cambios en el evento
         }
     };
 
@@ -50,7 +50,7 @@ const Calendario = () => {
                 ...events,
                 { title, start: info.dateStr, allDay: true, description }
             ]);
-            // Aquí podrías manejar la lógica para guardar el nuevo evento
+            // Aquí  manejar la lógica para guardar el nuevo evento
         }
     };
 
@@ -61,8 +61,8 @@ const Calendario = () => {
             locale={esLocale}
             firstDay={1} // 0: Domingo, 1: Lunes, 2: Martes, etc.
             headerToolbar={{
-                left: 'prev,next today',
-                center: 'title',
+                left: 'ayer,dia siguiente',
+                center: 'Título',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
             }}
             editable={true}
