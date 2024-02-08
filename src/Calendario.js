@@ -12,13 +12,15 @@ const Calendario = () => {
             title: 'Evento 1',
             start: '2024-01-28T10:00:00',
             end: '2024-01-28T12:00:00',
-            description: 'Descripción del evento 1'
+            description: 'Descripción del evento 1',
+            color: 'green' // Color personalizado para el evento 2
         },
         {
             title: 'Evento 2',
             start: '2024-01-29T14:00:00',
             end: '2024-01-29T16:00:00',
-            description: 'Descripción del evento 2'
+            description: 'Descripción del evento 2',
+            color: 'blue' // Color personalizado para el evento 2
         }
     ]);
 
