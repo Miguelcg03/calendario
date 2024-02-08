@@ -61,8 +61,8 @@ const Calendario = () => {
             locale={esLocale}
             firstDay={1} // 0: Domingo, 1: Lunes, 2: Martes, etc.
             headerToolbar={{
-                left: 'ayer,dia siguiente',
-                center: 'Título',
+                left: 'prev,next today',
+                center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
             }}
             editable={true}
