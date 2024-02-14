@@ -38,3 +38,83 @@
   transform: translate(-50%, -50%) scale(0.75);
   transition: transform 0.3s ease-out;
 }
+
+/* Estilos para el contenedor de eventos */
+.event-container {
+  display: flex; /* Utiliza un contenedor flexbox */
+  align-items: center; /* Alinea los elementos verticalmente */
+  justify-content: space-between;
+}
+
+/* Estilos para el botón de eliminar */
+.delete-button {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 5px; /* Ajusta el espacio entre el contenido del evento y el botón de eliminar */
+}
+
+.delete-button:hover {
+  background-color: #ff3333;
+}
+
+
+/* Estilos para el contenedor del calendario */
+.calendario-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Estilos para el campo de búsqueda */
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilos para el calendario */
+.fc-container {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.fc-header-toolbar {
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.fc-daygrid-event {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.fc-daygrid-event:hover {
+  background-color: #1a73e8;
+}
+
+.fc-daygrid-event-title {
+  font-weight: bold;
+}
+
+.fc-timegrid-event {
+  background-color: #0f9d58;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.fc-timegrid-event:hover {
+  background-color: #0b8043;
+}
