@@ -34,7 +34,7 @@ const Calendario = () => {
         setSelectedEvent(info.event);
     };
 
-  
+    
 
     const handleDateClick = (info) => {
         const title = prompt('Agregar título:');
@@ -64,7 +64,6 @@ const Calendario = () => {
         const colors = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', '#E6B333', '#3366E6', '#999966'];
         return colors[Math.floor(Math.random() * colors.length)];
     };
-
     return (
         <div>
             <input className="search-input"
@@ -73,7 +72,12 @@ const Calendario = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
-           
+             <input
+            type="color"
+            style={{ visibility: "hidden" }}
+            value={selectedEvent ? selectedEvent.color : "#000000"}
+        />
+            {/* Remove the input for the color picker */}
             <FullCalendar
                 plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                 initialView="timeGridWeek"
