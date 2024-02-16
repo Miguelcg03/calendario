@@ -1,3 +1,30 @@
+
+// -- Titulo --
+    // Calendario de React en Español
+// -- Descripción --
+    // La Aplicación de Calendario en React es una herramienta diseñada para ayudar a los usuarios a gestionar sus eventos diarios de manera eficiente· Permite añadir, modificar y eliminar eventos, así como también arrastrar y ampliar los eventos en las horas deseadas de un día·
+
+// -- Características Principales --
+    // + Gestión de Eventos: Los usuarios pueden crear, ver, modificar y eliminar eventos en el calendario·
+    // + Interactividad: Los eventos pueden ser arrastrados para cambiar su hora de inicio y finalización, y también pueden ser ampliados o reducidos en duración·
+    // + Colores Aleatorios: Los eventos se crean automáticamente con colores aleatorios para una mejor visualización y distinción·
+    // + Compatibilidad con React: La aplicación está construida utilizando React, lo que permite una experiencia de usuario fluida y reactiva·
+
+// -- Guía de Uso --
+    // + Crear un Evento
+        // Haga clic en el calendario·
+        // Se abrirá un "prompt" donde puede ingresar los detalles del evento, como título y descripción·
+    // + Modificar un Evento
+        // Haga clic en el evento que desea modificar en el calendario·
+        // Se abrirá un "prompt" con los detalles del evento seleccionado·
+    // + Eliminar un Evento
+        // Haga clic en la "X" del evento que desea eliminar en el calendario·
+    // + Arrastrar y Ampliar Eventos
+        // Para cambiar la hora de inicio de un evento, mantenga presionado el evento y arrástrelo a la nueva hora de inicio deseada·
+        // Para cambiar la duración de un evento, seleccione el borde inferior del evento y arrástrelo para ampliar o reducir la duración del evento· 
+
+
+
 // Importaciones de módulos necesarios
 import React, { useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
