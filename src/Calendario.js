@@ -28,20 +28,13 @@ const Calendario = () => {
     ]);
 
     const [searchTerm, setSearchTerm] = useState("");
+    const [selectedEvent, setSelectedEvent] = useState(null);
 
     const handleEventClick = (info) => {
-        const title = prompt('Editar título:', info.event.title);
-        const description = prompt('Editar descripción:', info.event.extendedProps.description);
-        if (title !== null && description !== null) {
-            const updatedEvents = events.map(event => {
-                if (event.id === info.event.id) {
-                    return { ...event, title, description };
-                }
-                return event;
-            });
-            setEvents(updatedEvents);
-        }
+        setSelectedEvent(info.event);
     };
+
+  
 
     const handleDateClick = (info) => {
         const title = prompt('Agregar título:');
@@ -52,7 +45,8 @@ const Calendario = () => {
                 title,
                 start: info.dateStr,
                 allDay: true,
-                description
+                description,
+                color: getRandomColor() // Asignar un color aleatorio al nuevo evento
             };
             setEvents(prevEvents => [...prevEvents, newEvent]);
         }
@@ -66,6 +60,11 @@ const Calendario = () => {
         event.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    const getRandomColor = () => {
+        const colors = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', '#E6B333', '#3366E6', '#999966'];
+        return colors[Math.floor(Math.random() * colors.length)];
+    };
+
     return (
         <div>
             <input className="search-input"
@@ -74,6 +73,7 @@ const Calendario = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
+           
             <FullCalendar
                 plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                 initialView="timeGridWeek"
